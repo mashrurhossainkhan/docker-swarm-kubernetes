@@ -1,0 +1,7 @@
+docker container run --publish 80:80 nginx//will show logs
+docker container run -d --publish 80:80 nginx //will not show logs
+docker container run -d --name webhost --publish 80:80 nginx //give it a name
+docker container ls //lists of active container
+docker container ls -a //list of all containers
+docker container logs <id/name> //check the logs
+docker container stop <id/name>
