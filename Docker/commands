@@ -5,3 +5,13 @@ docker container ls //lists of active container
 docker container ls -a //list of all containers
 docker container logs <id/name> //check the logs
 docker container stop <id/name>
+docker container start <id/name>
+docker container top <id/name>
+docker container rm 078 //id 1st 3
+docker ps
+docker container run --publish 8080:80 --name webhost -d nginx:1.11 nginx -T
+ps aux
+ps aux | grep mongo
+docker run -d -p 80:80 --detach --name my_nginx nginx
+docker run -d -p 3306:3306 --detach --name my_mysql -e MYSQL_RANDOM_ROOT_PASSWORD=YES mysql
+docker run -d -p 8080:80 --detach --name my_httpd httpd
