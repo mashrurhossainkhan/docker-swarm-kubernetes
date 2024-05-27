@@ -44,8 +44,19 @@ docker push new-repo:tagname=> docker push khanmashrur03/ubuntu1
 docker image build -t customnginx . //by going to dockerfile-sample-1
 docker container run -p 80:80 --rm nginx
 docker image build -t nginx-with-html .
-
 docker image tag nginx-with-html:latest khanmashrur03/nginx-with-html:latest
 docker push khanmashrur03/nginx-with-html:latest
 docker build -t nodejs_app_practice .
 docker container run --rm -p 80:3000 nodejs_app_practice 
+
+#docker volumes
+docker pull mysql
+docker inspect image mysql
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysql
+docker volume ls
+#named volume
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
+Docker volume create
+docker container run -d --name nginx -p 80:80 -v $(pwd):/use/share/nginx/html nginx
+
+
