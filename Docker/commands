@@ -15,3 +15,37 @@ ps aux | grep mongo
 docker run -d -p 80:80 --detach --name my_nginx nginx
 docker run -d -p 3306:3306 --detach --name my_mysql -e MYSQL_RANDOM_ROOT_PASSWORD=YES mysql
 docker run -d -p 8080:80 --detach --name my_httpd httpd
+docker container top <id> //process list in one container
+docker container inspect d69 //details of one container config
+docker container stats //performance statistics for all container -> memory, disk space etc
+docker container run -it --name ubuntu ubuntu //get the ubuntu's CLI
+docker container run -it alpine sh
+docker network ls
+docker network inspect 331//id
+Docker network inspect bridge
+docker network create a_new_sample_network
+docker container run -d --name nginx_new --network a_new_sample_network nginx 
+docker container run -d --name nginx_in_new_network1 --network a_new_sample_network nginx //now the new sample network will have two containers
+docker network connect bb358b149a44 d69f1aae8761 // <network> <container>
+docker network disconnect bb358b149a44 d69f1aae8761// <network> <container>
+docker container exec -it nginx_in_new_network1 ping nginx_new //they are in same network
+if (OCI runtime exec failed: exec failed: unable to start container process: exec: "ping": executable file not found in $PATH: unknown) {
+    docker container exec -it my_nginx /bin/bash
+    apt-get update
+    apt-get install inetutils-ping
+}
+ docker image ls
+ docker pull nginx
+ docker image inspect nginx
+ docker login
+
+docker tag local-image:tagname new-repo:tagname=>  docker tag bf3dc08bfed0 khanmashrur03/ubuntu1
+docker push new-repo:tagname=> docker push khanmashrur03/ubuntu1
+docker image build -t customnginx . //by going to dockerfile-sample-1
+docker container run -p 80:80 --rm nginx
+docker image build -t nginx-with-html .
+
+docker image tag nginx-with-html:latest khanmashrur03/nginx-with-html:latest
+docker push khanmashrur03/nginx-with-html:latest
+docker build -t nodejs_app_practice .
+docker container run --rm -p 80:3000 nodejs_app_practice 
